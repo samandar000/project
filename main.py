@@ -11,6 +11,15 @@ def get_lastupdate(updates):
     last_update = updates['result'][-1]
     chat_id = last_update['message']['chat']['id']
     text = last_update['message']['text']
+    another_text = 'salom,Salom,qonday'
+    
+    
+    if text in another_text  :
+            text = 'Salom,nima hizmat!'
+        
+    else:
+            text = 'Iltimos yana bir bor urinib ko`ring!'
+    
     message_id = last_update['message']['message_id']
     return chat_id,text,message_id
 
