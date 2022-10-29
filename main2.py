@@ -1,34 +1,25 @@
-import requests
+# import requests
 
-TOKEN = '5643654386:AAGaxNP-8Kkwzi8Ko047p0BZBd3t6a0eIu4'
 
-def get_updates(TOKEN):
-    updates = requests.get(f'https://api.telegram.org/bot{TOKEN}/getUpdates')
-    updates = updates.json()
-    return updates
+# TOKEN = '5643654386:AAGaxNP-8Kkwzi8Ko047p0BZBd3t6a0eIu4'
+# chat_id = 5325797385
 
-def get_lastupdate(updates):
-    last_update = updates['result'][-1]
-    chat_id = last_update['message']['chat']['id']
-    text = last_update['message']['text']
-    message_id = last_update['message']['message_id']
-    return chat_id,text,message_id
+# def send_button(chat_id,text,TOKEN):
+#     url = f'https://api.telegram.org/bot{TOKEN}/sendMessage'
 
-def send_message(TOKEN,chat_id,text):
-    data = {
-            'chat_id':chat_id,
-            'text':text
-        }
+#     button1 = {'text':'😺CAT'}
+#     button2 = {'text':'DOG'}
 
-    # r = requests.post(url = f'https://api.telegram.org/bot{TOKEN}/sendMessage',data=data)    
+#     keyboard = [[button1,button2]]
 
-new_message = -1
+#     reply_markup = {'keyboard':keyboard,'resize_keyboard':True}
 
-while True:
-    updates = get_updates(TOKEN)
-    lastupdate = get_lastupdate(updates)
-    chat_id,text,last_message_id = lastupdate
+#     data = {
+#         'chat_id':chat_id,
+#         'text':text,
+#         'reply_markup':reply_markup
+#     }
+#     r = requests.post(url,json=data)
+#     print(r.status_code)
 
-    if new_message != last_message_id:
-        send_message(TOKEN,chat_id=chat_id,text=text)
-        new_message = last_message_id
+# send_button(chat_id, 'hi' ,TOKEN)
